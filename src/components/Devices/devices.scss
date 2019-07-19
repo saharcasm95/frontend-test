@@ -18,8 +18,39 @@ div#devices-wrapper{
                 margin-bottom: 0;
             }
         }
+        div.animation-container{
+            position: absolute;
+            left: 50%;
+            top:50%;
+            div.circle-container{
+                width: 400px;
+                height: 200px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                div.circle{
+                    width: 15px;
+                    height: 15px;
+                    background: #fff;
+                    border-radius: 50%;
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    animation: anim 2s linear infinite;
+                  }
+            }          
+         
+        }
     }
-
+    @keyframes anim {
+        0%{
+            transform-origin: 700% 100%;
+            transform: rotate(0);
+        }
+    
+        100% {transform: rotate(360deg);}
+    }
     div.button-group{
         padding: 20px;
         position: fixed;

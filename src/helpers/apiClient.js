@@ -30,19 +30,18 @@ export const get = (url = '') => {
 }
 
 export function post (url = '', payload) {
-    console.log("Post api testing!!!!!", ApiUrl + url);
   return new Promise((resolve, reject) => {
     return fetch(
-      ApiUrl + url,
+      ApiUrl + url ,
       {
         method: 'POST',
         headers: header,
         body: JSON.stringify(payload)
       }
-    ).then((response) => {
-      console.log(response.json());
+    )
+    .then((response) => {
       if(response.ok)
-        return (resolve(response));
+        return (resolve(response.text()));
       else return reject(response);
     })
   });

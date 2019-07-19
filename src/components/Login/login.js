@@ -32,20 +32,7 @@ class Login extends React.Component{
           hasError: true
         })
       }
-      // fetch('http://35.201.2.209/login', {
-        //   method: 'post',    
-        //   headers: {'Content-Type':'application/json'},    
-        //   body: JSON.stringify({
-        //       "email": this.state.email, 
-        //       "password": this.state.password
-        //     }
-        //   )
-        // }).then((response) => {
-        //   console.log(response);
-        // }).catch((error) => {
-        //   alert("Invalid username or password");
-        // })
-      }
+    }
 
     render(){
         return (

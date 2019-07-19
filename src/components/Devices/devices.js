@@ -2,6 +2,7 @@ import React from "react";
 import './devices.scss';
 import { Button,  Modal } from 'react-bootstrap';
 import { Route } from 'react-router';
+import { post} from "../../helpers/apiClient";
 
 class Devices extends React.Component{
     constructor(props) {
@@ -26,8 +27,13 @@ class Devices extends React.Component{
           method: 'get',    
           headers: {'Content-Type':'application/json'},    
         }).then((response) => {
-            // devices = response; 
-          console.log(response);
+            // devices = response;
+            response.json().then(data => {
+              console.log(this.state.devices);
+
+              this.setState({devices: data.devices});
+              
+            });
         }).catch((error) => {
           alert("Invalid username or password");
         })
@@ -43,28 +49,35 @@ class Devices extends React.Component{
       history.push('/'); //remove authentication       
     }
     
-    notify = () => {//notifies completion of task.
-        fetch('http://35.201.2.209/notify', {
-          method: 'post',    
-        
-          headers: {'Content-Type':'application/json'},
-          body: JSON.stringify({
+    notify = async () => {
+
+      try{
+        const response = await post('notify',{
             name: 'Noor e Sahar',
             email: 'nooresahar95@gmail.com',
             repoUrl: 'https://github.com/saharcasm95/frontend-test',
             message: 'Please hire me, I am broke. Because as a developer I have used up all of my Cache. Also, I really like this company :)',
-        })}).then((response) => {
-          alert("Notified!")
-          console.log(response);
-        }).catch((error) => {
-          alert("API error");
-        });
+      });
+        alert("Notified!")
+        console.log(response);
+      } catch(ex) {
+        alert("API error");
       }
-     
+
+    }
 
     render(){
-        
-        
+      var topPosition = 0, leftPosition = 0;
+        var devices = this.state.devices.map(function(i) {
+          topPosition += 25;
+          leftPosition += 25;
+          return (
+            <div key={i.id} className="circle-container" style={{top: topPosition, left: leftPosition}}>
+              <div className="circle" ></div>
+            </div>
+          );
+      });
+
         return(
           <div id="devices-wrapper">
             <div className="devices-info">
@@ -73,8 +86,9 @@ class Devices extends React.Component{
                 <p>Devices</p> 
                 <p>Online</p>
               </div>
-
-
+              <div className="animation-container">
+                {devices}
+              </div>
             </div> 
 
             <div className="button-group">
