@@ -53,7 +53,7 @@ class Login extends React.Component{
                     <FormControl
                       value={this.state.email}
                       onChange={(e) => this.setState({ email: e.target.value })}
-                      type="text"
+                      type="email"
                       placeholder="Email Address"
                       aria-label="Email Address"
                       aria-describedby="email-addon"
