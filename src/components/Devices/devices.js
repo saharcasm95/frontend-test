@@ -1,11 +1,10 @@
 import React from "react";
 import './devices.scss';
 
-
 class Devices extends React.Component{
     constructor(props) {
         super(props)
-        this.state = {
+        this.state = {//hardcoded data for testing & view design
           devices:[
               {"id": 0, "name": "Malinde"},
               {"id": 1, "name": "Muffin"},
@@ -18,8 +17,24 @@ class Devices extends React.Component{
             ],
         }
     }
-
-   
+    
+    poolDevices = () => {//gets devices from API
+        fetch('http://35.201.2.209/devices', {
+          method: 'get',    
+          headers: {'Content-Type':'application/json'},    
+        }).then((response) => {
+            // devices = response; 
+          console.log(response);
+        }).catch((error) => {
+          alert("Invalid username or password");
+        })
+    }
+    
+    componentDidMount = () =>{//hits poolDevices every 5 seconds
+        setInterval(() => {
+            this.poolDevices()
+        }, 5000);
+    }
       
      
 
