@@ -42,7 +42,7 @@ export function post (url = '', payload) {
     ).then((response) => {
       console.log(response.json());
       if(response.ok)
-        return (resolve(response.json()));
+        return (resolve(response));
       else return reject(response);
     })
   });
