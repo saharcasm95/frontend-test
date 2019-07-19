@@ -1,5 +1,7 @@
 import React from 'react';
 import Login from "./components/Login/login";
+import Devices from "./components/Devices/devices";
+
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom'
 
 import './App.css';
