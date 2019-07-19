@@ -2,7 +2,7 @@ import React from "react";
 import './devices.scss';
 import { Button,  Modal } from 'react-bootstrap';
 import { Route } from 'react-router';
-import { post} from "../../helpers/apiClient";
+import { get, post} from "../../helpers/apiClient";
 
 class Devices extends React.Component{
     constructor(props) {
@@ -22,23 +22,17 @@ class Devices extends React.Component{
         }
     }
     
-    poolDevices = () => {//gets devices from API
-        fetch('http://35.201.2.209/devices', {
-          method: 'get',    
-          headers: {'Content-Type':'application/json'},    
-        }).then((response) => {
-            // devices = response;
-            response.json().then(data => {
-              console.log(this.state.devices);
-
-              this.setState({devices: data.devices});
-              
-            });
-        }).catch((error) => {
-          alert("Invalid username or password");
+    poolDevices = async () => {
+      try{
+        const response = await get('devices');
+        this.setState({devices: response.devices});
+      } catch(ex) {
+        this.setState({
+          hasError: true
         })
+      }
     }
-    
+
     componentDidMount = () =>{//hits poolDevices every 5 seconds
         setInterval(() => {
             this.poolDevices()
