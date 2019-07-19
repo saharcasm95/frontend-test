@@ -49,12 +49,7 @@ class Devices extends React.Component{
             email: 'nooresahar95@gmail.com',
             repoUrl: 'https://github.com/saharcasm95/frontend-test',
             message: 'Please hire me, I am broke. Because as a developer I have used up all of my Cache. Also, I really like this company :)',
-          
-        
-        }
-          
-            )
-        }).then((response) => {
+        })}).then((response) => {
           alert("Notified!")
           console.log(response);
         }).catch((error) => {

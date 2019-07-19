@@ -16,10 +16,8 @@ div#devices-wrapper{
             font-size: 12px;
             p{
                 margin-bottom: 0;
-            
             }
         }
-        
     }
 
     div.button-group{
@@ -27,11 +25,9 @@ div#devices-wrapper{
         position: fixed;
         clear: both;
         left: 0;
-
         bottom: 0;
         text-align: center;
         width: 100%;
-
         button{
             border-radius: 0.2rem;
             padding: 7px 20px;
@@ -40,21 +36,14 @@ div#devices-wrapper{
             text-transform: uppercase;
             margin: 5px;
             font-weight: 500;
-
-
         }
         button.notify-button{
             background-color: white;
-          
             color: #262e35;
         }
 
         button.logout-button{
             background-color: #262e35;
-       
-       
         }
-
-        
     }
 }

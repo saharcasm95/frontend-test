@@ -2,7 +2,8 @@ import React from "react";
 import { Button, Modal, InputGroup, FormControl, Toast } from 'react-bootstrap';
 import { Route } from 'react-router';
 import { FaEnvelope, FaExclamationCircle } from 'react-icons/fa';
-import './login.scss'
+import './login.scss';
+import { post, initializeToken } from "../../helpers/apiClient";
 
 
 class Login extends React.Component{
@@ -14,20 +15,39 @@ class Login extends React.Component{
           hasError: null
         }
     }
-    submit = (history) => {//Authenticates the user
-        fetch('http://35.201.2.209/login', {
-          method: 'post',    
-          headers: {'Content-Type':'application/json'},    
-          body: JSON.stringify({
-              "email": this.state.email, 
-              "password": this.state.password
-            }
-          )
-        }).then((response) => {
-          console.log(response);
-        }).catch((error) => {
-          alert("Invalid username or password");
+    submit = async (history) => {//Authenticates the user
+      try{
+        const response = await post('login', {
+          "email": this.state.email,
+          "password": this.state.password
+        });
+        console.log("Login Api response:: ",response);
+        initializeToken(response); 
+        history.push('/devices');
+      } catch(error) {
+        console.log("error:: ",error);
+        console.log("no login");
+        this.setState({
+          hasError: true
         })
+      }
+
+
+
+
+      // fetch('http://35.201.2.209/login', {
+        //   method: 'post',    
+        //   headers: {'Content-Type':'application/json'},    
+        //   body: JSON.stringify({
+        //       "email": this.state.email, 
+        //       "password": this.state.password
+        //     }
+        //   )
+        // }).then((response) => {
+        //   console.log(response);
+        // }).catch((error) => {
+        //   alert("Invalid username or password");
+        // })
       }
 
     render(){
