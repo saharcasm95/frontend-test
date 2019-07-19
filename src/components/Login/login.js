@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal, InputGroup, FormControl } from 'react-bootstrap';
+import { Button, Modal, InputGroup, FormControl, Toast } from 'react-bootstrap';
 import { Route } from 'react-router';
 import { FaEnvelope, FaExclamationCircle } from 'react-icons/fa';
 import './login.scss'
@@ -33,6 +33,9 @@ class Login extends React.Component{
     render(){
         return (
             <div id="login-wrapper" >
+              <Toast show={this.state.hasError} onClick={() => this.setState({ hasError: false })}>
+                <Toast.Body>Error in Validation</Toast.Body>
+              </Toast>
               <Modal.Dialog centered>
                 <Modal.Header className="text-center">
                   <Modal.Title>Login</Modal.Title>

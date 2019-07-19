@@ -1,4 +1,5 @@
 div#login-wrapper{
+    overflow: hidden;
     background:#262e35;
     div.modal-dialog{
         width: 310px;
@@ -7,7 +8,10 @@ div#login-wrapper{
             padding: 20px;
             border-radius: 0.25rem;
             box-shadow: 7px 7px 5px;
+
             div.modal-header{
+                text-align: center;
+                display: inline;
                 border-bottom: none;
                 div.modal-title{
                     font-weight: 100;
@@ -25,25 +29,19 @@ div#login-wrapper{
             }
             div.modal-footer{
                 border-top: none;
+                text-align: center;
+                display: inline;
                 button{
                     border-radius: 0.2rem;
                     padding: 7px 20px;
                     background-color: #0881bd;
                     font-weight: 500;
                     font-size: 0.6rem;
+                    text-transform: uppercase
                 }
             }
         }
     }
-
-}
-.text-center{
-    display: inline;
-    text-align: center;
-}
-
-.login-button{
-    text-transform: uppercase;
 }
 
 
