@@ -25,7 +25,9 @@ class Devices extends React.Component{
     }
 
     componentDidMount = () =>{//hits poolDevices every 5 seconds
-        setInterval(() => {
+      this.poolDevices();
+
+      setInterval(() => {
             this.poolDevices()
         }, 5000);
     }
