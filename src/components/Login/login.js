@@ -21,7 +21,8 @@ class Login extends React.Component{
           "email": this.state.email,
           "password": this.state.password
         });
-        console.log("Login Api response:: ",response);
+        console.log("Login Api response:: ", response);
+
         initializeToken(response); 
         history.push('/devices');
       } catch(error) {
@@ -31,10 +32,6 @@ class Login extends React.Component{
           hasError: true
         })
       }
-
-
-
-
       // fetch('http://35.201.2.209/login', {
         //   method: 'post',    
         //   headers: {'Content-Type':'application/json'},    

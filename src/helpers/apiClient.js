@@ -8,7 +8,8 @@ const header = {
 
 export const initializeToken = (token) => {
   header.authorization = 'JWT ' + token;
-  localStorage.setItem('jwtTestApp', 'some stinr hardcoded');
+  console.log("token:: ", token)
+  localStorage.setItem('jwtTestApp', token);
 }
 
 export const get = (url = '') => {
@@ -39,6 +40,7 @@ export function post (url = '', payload) {
         body: JSON.stringify(payload)
       }
     ).then((response) => {
+      console.log(response.json());
       if(response.ok)
         return (resolve(response.json()));
       else return reject(response);
