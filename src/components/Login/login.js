@@ -14,8 +14,8 @@ class Login extends React.Component{
           hasError: null
         }
     }
-    submit = (history) => {
-        fetch('http://35.201.2.209/login', {//add login endpoint here.
+    submit = (history) => {//Authenticates the user
+        fetch('http://35.201.2.209/login', {
           method: 'post',    
           headers: {'Content-Type':'application/json'},    
           body: JSON.stringify({
