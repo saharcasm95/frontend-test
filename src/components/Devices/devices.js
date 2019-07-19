@@ -38,6 +38,10 @@ class Devices extends React.Component{
             this.poolDevices()
         }, 5000);
     }
+    logout = (history) => {
+      localStorage.removeItem('jwtTestApp');
+      history.push('/'); //remove authentication       
+    }
     
     notify = () => {//notifies completion of task.
         fetch('http://35.201.2.209/notify', {
@@ -81,13 +85,15 @@ class Devices extends React.Component{
                   onClick={this.notify}>
                   Notify
               </Button>
-              <Button
+              <Route render={({ history}) => (
+                <Button
                   type='button'
                   className="logout-button"
                   variant="primary"
-                  onClick={this.logout}>
+                  onClick={() => {this.logout(history)}}>
                   Log out
                 </Button>
+              )} />
 
             </div>
 
