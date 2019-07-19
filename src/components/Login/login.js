@@ -38,7 +38,7 @@ class Login extends React.Component{
         return (
             <div id="login-wrapper" >
               <Toast show={this.state.hasError} onClick={() => this.setState({ hasError: false })}>
-                <Toast.Body>Error in Validation</Toast.Body>
+                <Toast.Body>Incorrect Password</Toast.Body>
               </Toast>
               <Modal.Dialog centered>
                 <Modal.Header className="text-center">
@@ -67,7 +67,7 @@ class Login extends React.Component{
                     <FormControl
                       value={this.state.password}
                       onChange={(e) => this.setState({ password: e.target.value })}
-                      type="text"
+                      type="password"
                       placeholder="Password"
                       aria-label="Password"
                       aria-describedby="password-addon"

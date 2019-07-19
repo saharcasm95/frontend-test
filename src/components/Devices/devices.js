@@ -9,16 +9,7 @@ class Devices extends React.Component{
         super(props)
         this.state = {//hardcoded data for testing & view design
             //don't forget to remove this.
-          devices:[
-              {"id": 0, "name": "Malinde"},
-              {"id": 1, "name": "Muffin"},
-              {"id": 2, "name": "Gerianne"},
-              {"id": 3, "name": "Noreen"},
-              {"id": 4, "name": "Yalonda"},
-              {"id": 5, "name": "Tamqrah"},
-              {"id": 6, "name": "Denni"},
-              {"id": 7, "name": "Francine"}
-            ],
+          devices:[],
         }
     }
     
