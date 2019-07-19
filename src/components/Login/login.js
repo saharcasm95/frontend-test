@@ -14,7 +14,7 @@ class Login extends React.Component{
           hasError: null
         }
     }
-    submit = () => {
+    submit = (history) => {
         fetch('http://35.201.2.209/login', {//add login endpoint here.
           method: 'post',    
           headers: {'Content-Type':'application/json'},    
@@ -73,8 +73,17 @@ class Login extends React.Component{
                 </Modal.Body>
 
                 <Modal.Footer className="text-center">
-                  <Button className="login-button" variant="primary" onClick={this.submit}>Log in</Button>
+                  <Route render={({ history}) => (
+                    <Button
+                      type='button'
+                      className="login-button"
+                      variant="primary"
+                      onClick={() => {this.submit(history)}}>
+                      Log in
+                    </Button>
+                  )} />
                 </Modal.Footer>
+
               </Modal.Dialog>
 
             </div>
